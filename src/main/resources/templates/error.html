@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>错误页面</title>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="text-center mb-5">错误页面</h1>
+  <div class="alert alert-danger" role="alert">
+    <p th:text="${errorMessage}">发生未知错误</p>
+  </div>
+  <a href="/upload" class="btn btn-primary">返回上传页面</a>
+</div>
+</body>
+</html>

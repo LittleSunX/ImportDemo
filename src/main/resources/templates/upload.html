@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center mb-5">文件上传</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="file" class="form-label">选择文件</label>
+            <input type="file" class="form-control" id="file" name="file">
+            <div class="form-text">只能上传Excel文件</div>
+        </div>
+        <button type="submit" class="btn btn-primary">上传</button>
+    </form>
+</div>
+</body>
+</html>
