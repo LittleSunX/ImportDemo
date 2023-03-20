@@ -1,5 +1,6 @@
 package com.example.importdemo;
 
+import com.example.model.CommonConstants;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ import java.util.Set;
 @Controller
 public class BatchImportController {
 
-    public static final String IS_EXCEL = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    private static final String ERROR = CommonConstants.ERROR;
 
     @GetMapping("/")
     public String index() {
@@ -35,17 +36,17 @@ public class BatchImportController {
 
 
     @GetMapping("/error")
-    public String error() {
-        return "error";
+    public String showError() {
+        return ERROR;
     }
 
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file, Model model) {
         // 检查文件类型
-        if (!IS_EXCEL.equals(file.getContentType())) {
+        if (!CommonConstants.IS_EXCEL.equals(file.getContentType())) {
             model.addAttribute("errorMessage", "请上传Excel文件");
-            return "error";
+            return ERROR;
         }
 
         try {
@@ -100,7 +101,7 @@ public class BatchImportController {
             e.printStackTrace();
             // 将错误信息添加到Model中
             model.addAttribute("errorMessage", e.getMessage());
-            return "error";
+            return ERROR;
         }
 
         return "success";
